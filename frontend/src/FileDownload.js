@@ -11,7 +11,7 @@ const FileDownload = () => {
         }
 
         try {
-            const response = await axios.get(`http://localhost:5000/download/${filename}`, {
+            const response = await axios.get(`https://dd49-2409-4072-216-f0e5-c4de-1ce3-f5-b00.ngrok-free.app/download/${filename}`, {
                 responseType: 'blob' // Important for downloading files
             });
 
