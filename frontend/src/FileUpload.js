@@ -15,7 +15,7 @@ const FileUpload = () => {
         formData.append("file", file);
 
         try {
-            const response = await axios.post("http://localhost:5000/upload", formData);
+            const response = await axios.post("http://https://dd49-2409-4072-216-f0e5-c4de-1ce3-f5-b00.ngrok-free.app/upload", formData);
             alert(response.data.message);
         } catch (error) {
             alert("Error uploading file. Please try again.");
