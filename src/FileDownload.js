@@ -1,29 +1,20 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+
+const API_URL = "https://b037-2409-408d-517-5bf5-c65-d23c-a54c-f1bc.ngrok-free.app"; // Use ngrok URL
 
 const FileDownload = () => {
     const [filename, setFilename] = useState("");
 
     const handleDownload = async () => {
         if (!filename) {
-            alert("Enter a filename.");
+            alert("Please enter a filename.");
             return;
         }
 
-        try {
-            const response = await axios.get(`https://dd49-2409-4072-216-f0e5-c4de-1ce3-f5-b00.ngrok-free.app/download/${filename}`, {
-                responseType: 'blob' // Important for downloading files
-            });
+        const downloadLink = `${API_URL}/download/${filename}`;
 
-            const url = window.URL.createObjectURL(new Blob([response.data]));
-            const link = document.createElement('a');
-            link.href = url;
-            link.setAttribute('download', filename);
-            document.body.appendChild(link);
-            link.click();
-        } catch (error) {
-            alert("Error downloading file. Check the filename and try again.");
-        }
+        // Open file download in a new tab
+        window.open(downloadLink, "_blank");
     };
 
     return (
